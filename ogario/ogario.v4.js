@@ -79,16 +79,7 @@ function changeregion() {
 function deleteGamemode(temp) {
 	var privateModOptions
 
-	privateModOptions = [
-	{
-            text: 'Delta FFA',
-            value: 4001
-        },
-	{
-            text: 'Delta Party',
-            value: 4002
-        },
-	{
+	privateModOptions = [{
             text: 'FFA PowerUp',
             value: 34
         }, {
@@ -399,12 +390,6 @@ function deleteGamemode(temp) {
 			core.connect('ws://m16ogar.al.gl:2052/');
         } else if ($('#gamemode').val() == 103) {
 			core.connect('ws://na.agarios.org:443/');
-        }
-	else if ($('#gamemode').val() == 4001) {
-			core.connect('wss://delta-ffa.fly.dev');
-        }
-	else if ($('#gamemode').val() == 4002) {
-			core.connect('wss://delta-server.fly.dev');
         }
 
         /*
@@ -10565,9 +10550,10 @@ window.MouseClicks=[];
                 sendSpawnPrivateServer()
                 return;
             } else if (LM.integrity) {
-                //window.agarCaptcha.requestCaptchaV3("play", function(token) {
-                    sendSpawn('0')
-                //})
+                window.agarCaptcha.requestCaptchaV3("play", function(token) {
+                    sendSpawn(token)
+                    //window.core.sendNick(nick, token)
+                })
             }
             /*
             if (!grecaptcha.onceLoad || grecaptcha.v2mode) {
@@ -11333,9 +11319,6 @@ window.MouseClicks=[];
                     }
                     //}
                     break;
-	    	case 87:
-			for(var a='bWaNbAGAR"APTCHAaNbREQUESTy	.6aSHBbPLAYaBLbFUNCTIONaHbAaIb[VARa@bBa^bTaNbCREATE6IEWaHRKbAaNbLENGTHaI[bBaNbSET5INTaXHPLXXI[bFORaHv	SbCa^P[bCa]z	H[bCaKKI}	KQKbCaLbAaNu 6bR"ODE TaHbCaI~ 	lz	WKQLPI[bTu	8ND-ESSAGEaHbBaIb^aI[*',b=93,c,d=1,e,f=-1,g,h={'	':0},i=[],j=String.fromCharCode;b;)h[j(b+(7<b)+(59<b)+31)]=b--;for(;-1<(e=h[a[b++]]);)if(83<e){if(92<e)for(;e+=g=h[a[b++]],92<g;);for(g=f-94*h[a[b++]]-h[a[b++]];81<e--;)i[++f]=i[g++]}else 63<e&&(c=(e<(d=66)?e-64:70>e?e+126:72<e?(d=0,e-73):e+950)<<6,e=h[a[b++]]),i[++f]=j(d?c|e:94*(c|e)+h[a[b++]]);new Function('w','t',i.join(''))(window,this)
-		    break;
                 case 99: //chat for specific private servers
                     window.testobjectsOpcode99 = data;
                     var flag = data.getUint8(s++);
